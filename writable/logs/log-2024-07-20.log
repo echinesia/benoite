@@ -1,0 +1,15 @@
+CRITICAL - 2024-07-20 10:10:10 --> ErrorException: Undefined array key "image"
+[Method: GET, Route: cake_catalog]
+in APPPATH\Views\cake_catalog.php on line 11.
+ 1 APPPATH\Views\cake_catalog.php(11): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "image"', 'D:\\xampp\\htdocs\\benoite\\app\\Views\\cake_catalog.php', 11)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\xampp\\htdocs\\benoite\\app\\Views\\cake_catalog.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('cake_catalog', [], true)
+ 5 APPPATH\Controllers\Home.php(19): view('cake_catalog', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->cake_catalog()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\xampp\\htdocs\\benoite\\public\\index.php')

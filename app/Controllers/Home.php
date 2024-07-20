@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\CakeModel;
+
 class Home extends BaseController
 {
     public function index()
@@ -11,11 +13,19 @@ class Home extends BaseController
 
     public function cake_catalog()
     {
-        return view('cake_catalog');
+        $cakeModel = new CakeModel();
+        $data['cakes'] = $cakeModel->findAll();
+
+        return view('cake_catalog', $data);
     }
 
     public function contact_us()
     {
         return view('contact_us');
+    }
+
+    public function user_data()
+    {
+        return view('user_data');
     }
 }
