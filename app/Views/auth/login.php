@@ -16,6 +16,11 @@
         </div>
         <button type="submit" class="btn btn-primary">Login</button>
     </form>
+    <div class="mt-3">
+        <small>
+            If you don't have an account, <a href="/register">sign up here</a>.
+        </small>
+    </div>
 </div>
 
 <?= $this->include('layouts/footer') ?>

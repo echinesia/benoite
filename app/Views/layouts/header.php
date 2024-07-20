@@ -27,9 +27,18 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/contact_us">Contact Us</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/user_data">User</a>
-                    </li>
+                    <?php if (session()->get('logged_in')) : ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/user">User Page</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                    <?php else : ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Login</a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
