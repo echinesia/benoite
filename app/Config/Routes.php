@@ -14,4 +14,3 @@ $routes->get('login', 'Auth::login');
 $routes->post('authenticate', 'Auth::authenticate');
 $routes->get('logout', 'Auth::logout');
 $routes->get('user', 'User::index');
-

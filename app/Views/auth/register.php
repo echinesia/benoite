@@ -18,6 +18,7 @@
         <button type="submit" class="btn btn-primary">Register</button>
     </form>
 
+
 </div>
 
 <?= $this->include('layouts/footer') ?>

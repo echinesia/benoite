@@ -24,8 +24,4 @@ class Home extends BaseController
         return view('contact_us');
     }
 
-    public function user_data()
-    {
-        return view('user_data');
-    }
 }
