@@ -13,22 +13,28 @@ class Auth extends BaseController
 
     public function store()
     {
+        helper(['form', 'url']);
+        $session = session();
         $userModel = new UserModel();
+
         $data = [
             'username' => $this->request->getVar('username'),
             'email'    => $this->request->getVar('email'),
             'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
         ];
-        $userModel->save($data);
 
-        // Log the user in after registration
-        $session = session();
-        $session->set([
-            'username' => $data['username'],
-            'logged_in' => true,
-        ]);
-
-        return redirect()->to('/user');
+        if ($userModel->save($data)) {
+            $session->set([
+                'username' => $data['username'],
+                'logged_in' => true,
+            ]);
+            return redirect()->to('/user');
+        } else {
+            $errors = $userModel->errors();
+            var_dump($errors); // Debugging line
+            $session->setFlashdata('msg', 'Registration failed. Please try again.');
+            return redirect()->to('/register');
+        }
     }
 
     public function login()

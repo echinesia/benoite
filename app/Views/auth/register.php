@@ -3,6 +3,7 @@
 <div class="container">
     <h2>Register</h2>
     <form action="/store" method="post">
+        <?= csrf_field() ?>
         <div class="mb-3">
             <label for="username" class="form-label">Username</label>
             <input type="text" class="form-control" id="username" name="username" required>
