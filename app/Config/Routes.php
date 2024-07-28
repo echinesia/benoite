@@ -15,3 +15,6 @@ $routes->post('authenticate', 'Auth::authenticate');
 $routes->get('logout', 'Auth::logout');
 $routes->get('user', 'User::index');
 $routes->get('admin', 'Admin::index', ['filter' => 'adminFilter']);
+$routes->get('cart', 'CartController::index');
+$routes->post('cart/update/(:num)', 'CartController::update/$1');
+$routes->get('cart/remove/(:num)', 'CartController::remove/$1');

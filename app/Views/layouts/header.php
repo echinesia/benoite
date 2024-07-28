@@ -27,6 +27,9 @@
                         <a class="nav-link" href="/contact_us">Contact Us</a>
                     </li>
                     <?php if (session()->get('logged_in')) : ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/cart">Cart</a>
+                        </li>
                         <?php if (session()->get('is_admin')) : ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="/admin">Admin</a>

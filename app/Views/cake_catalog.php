@@ -17,7 +17,7 @@
                                 <h5 class="card-title"><?= esc($cake['name']) ?></h5>
                                 <p class="card-text"><?= esc($cake['description']) ?></p>
                                 <p class="card-text">$<?= esc($cake['price']) ?></p>
-                                <a href="<?= base_url('cart/add/' . esc($cake['id'])) ?>" class="btn btn-primary">Add to Cart</a>
+                                <a href="<?= base_url('cart/update/' . esc($cake['id'])) ?>" class="btn btn-primary">Add to Cart</a>
                             </div>
                         </div>
                     </div>
