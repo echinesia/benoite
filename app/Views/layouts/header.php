@@ -30,12 +30,13 @@
                     <?php if (session()->get('logged_in')) : ?>
                         <?php if (session()->get('is_admin')) : ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin">Admin Page</a>
+                                <a class="nav-link" href="/admin">Admin</a>
+                            </li>
+                        <?php else : ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/user">User</a>
                             </li>
                         <?php endif; ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/user">User Page</a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/logout">Logout</a>
                         </li>

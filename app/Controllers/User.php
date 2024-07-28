@@ -2,12 +2,14 @@
 
 namespace App\Controllers;
 
-class User extends BaseController
+use CodeIgniter\Controller;
+
+class User extends Controller
 {
     public function index()
     {
         $session = session();
-        if (!$session->get('logged_in')) {
+        if (!$session->get('logged_in') || $session->get('is_admin')) {
             return redirect()->to('/login');
         }
 

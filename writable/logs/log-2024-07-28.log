@@ -1,0 +1,7 @@
+CRITICAL - 2024-07-28 11:02:34 --> ParseError: syntax error, unexpected token ","
+[Method: CLI, Route: serve]
+in APPPATH\Config\Routes.php on line 17.
+ 1 SYSTEMPATH\CLI\Console.php(41): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 2 SYSTEMPATH\Boot.php(351): CodeIgniter\CLI\Console->run()
+ 3 SYSTEMPATH\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+ 4 ROOTPATH\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
