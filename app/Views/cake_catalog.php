@@ -8,7 +8,10 @@
             <?php foreach ($cakes as $cake) : ?>
                 <div class="col-md-4 mb-4">
                     <div class="card bg-dark text-white h-100">
-                        <img src="<?= base_url('uploads/' . esc($cake['image_url'])) ?>" class="card-img-top" alt="<?= esc($cake['name']) ?>">
+                        <?php
+                        $imageUrl = base_url('uploads/' . esc($cake['image_url']));
+                        ?>
+                        <img src="<?= $imageUrl ?>" class="card-img-top" alt="<?= esc($cake['name']) ?>">
                         <div class="card-body">
                             <h5 class="card-title"><?= esc($cake['name']) ?></h5>
                             <p class="card-text"><?= esc($cake['description']) ?></p>
