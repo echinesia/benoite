@@ -28,6 +28,11 @@
                         <a class="nav-link" href="/contact_us">Contact Us</a>
                     </li>
                     <?php if (session()->get('logged_in')) : ?>
+                        <?php if (session()->get('is_admin')) : ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin">Admin Page</a>
+                            </li>
+                        <?php endif; ?>
                         <li class="nav-item">
                             <a class="nav-link" href="/user">User Page</a>
                         </li>

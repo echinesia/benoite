@@ -21,11 +21,13 @@ class Auth extends BaseController
             'username' => $this->request->getVar('username'),
             'email'    => $this->request->getVar('email'),
             'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
+            'is_admin' => $this->request->getVar('is_admin') ? 1 : 0,
         ];
 
         if ($userModel->save($data)) {
             $session->set([
                 'username' => $data['username'],
+                'is_admin' => $data['is_admin'],
                 'logged_in' => true,
             ]);
             return redirect()->to('/user');
@@ -56,6 +58,7 @@ class Auth extends BaseController
             if ($auth) {
                 $session->set([
                     'username' => $user['username'],
+                    'is_admin' => $user['is_admin'],
                     'logged_in' => true,
                 ]);
                 return redirect()->to('/user');
