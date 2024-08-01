@@ -36,7 +36,7 @@ class CheckoutController extends BaseController
         ];
 
         // Save order to database (this example assumes an OrderModel exists)
-        $orderModel = new \App\Models\OrderModel();
+        $orderModel = new \App\Models\Order_Model();
         $orderId = $orderModel->insert($orderData);
 
         // Save order details

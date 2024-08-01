@@ -21,5 +21,9 @@ $routes->get('/cart/remove/(:num)', 'CartController::remove/$1');
 $routes->post('/cart/update', 'CartController::update');
 $routes->get('/checkout', 'CheckoutController::index');
 $routes->post('/checkout/complete', 'CheckoutController::complete');
-$routes->get('/order_history', 'UserController::orderHistory');
+$route['user/orderHistory'] = 'user/orderHistory';
 
+
+$routes->get('profile_view/view', 'ProfileController::view');
+$routes->post('profile_view/updateProfile', 'ProfileController::updateProfile');
+$routes->post('profile_view/changePassword', 'ProfileController::changePassword');

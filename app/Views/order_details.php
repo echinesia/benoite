@@ -28,7 +28,7 @@
             <td><?= $order['created_at'] ?></td>
         </tr>
     </table>
-    <a href="/order_history">Back to Order History</a>
+    <a href="user/order_history">Back to Order History</a>
 </body>
 
 <?= $this->include('layouts/footer') ?>

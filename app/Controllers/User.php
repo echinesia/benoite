@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Order_Model;
 use App\Models\OrderModel;
 use CodeIgniter\Controller;
 
@@ -19,10 +20,16 @@ class User extends Controller
 
     public function orderHistory()
     {
-        $userId = session()->get('user_id'); // Fetch user ID from session
-        $model = new OrderModel(); // Create an instance of OrderModel
-        $orders = $model->where('user_id', $userId)->findAll(); // Fetch orders for the user
+        $user_id = session()->get('user_id'); // Get logged-in user ID
 
-        echo view('order_history', ['orders' => $orders]); // Pass orders to view
+        $orderModel = new Order_Model(); // Create an instance of OrderModel
+
+        try {
+            $data['orders'] = $orderModel->getOrdersByUserId($user_id); // Fetch orders
+        } catch (\Exception $e) {
+            // Handle the exception
+        }
+
+        return view('user/order_history', $data); // Pass data to the view
     }
 }
