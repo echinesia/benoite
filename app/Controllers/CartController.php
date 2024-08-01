@@ -1,51 +1,59 @@
 <?php
-// CartController.php
+
 namespace App\Controllers;
 
-use App\Models\CartModel;
 use App\Models\CakeModel;
 
 class CartController extends BaseController
 {
     public function index()
     {
-        $userId = session()->get('user_id');
-        if (!$userId) {
-            session()->setFlashdata('message', 'Please login to add items to your cart.');
-            return redirect()->to('login');
-        }
+        $cart = session()->get('cart') ?? [];
+        return view('cart/index', ['cart' => $cart]);
+    }
 
-        $cartModel = new CartModel();
+    public function add($id)
+    {
         $cakeModel = new CakeModel();
+        $cake = $cakeModel->find($id);
 
-        $cartItems = $cartModel->getCartItems($userId);
-
-        foreach ($cartItems as &$item) {
-            $cake = $cakeModel->find($item['cake_id']);
-            $item['name'] = $cake['name'];
-            $item['description'] = $cake['description'];
-            $item['price'] = $cake['price'];
-            $item['image_url'] = $cake['image_url'];
-            $item['total'] = $item['quantity'] * $item['price'];
+        if ($cake) {
+            $cart = session()->get('cart') ?? [];
+            if (isset($cart[$id])) {
+                $cart[$id]['quantity']++;
+            } else {
+                $cart[$id] = [
+                    'id' => $cake['id'],
+                    'name' => $cake['name'],
+                    'price' => $cake['price'],
+                    'image' => $cake['image_url'],
+                    'quantity' => 1
+                ];
+            }
+            session()->set('cart', $cart);
         }
-
-        return view('cart_view', ['cartItems' => $cartItems]);
+        return redirect()->to('/cart');
     }
 
-    public function update($cartItemId)
+    public function remove($id)
     {
-        $quantity = $this->request->getPost('quantity');
-        $cartModel = new CartModel();
-        $cartModel->update($cartItemId, ['quantity' => $quantity]);
-
-        return redirect()->to('cart');
+        $cart = session()->get('cart') ?? [];
+        if (isset($cart[$id])) {
+            unset($cart[$id]);
+            session()->set('cart', $cart);
+        }
+        return redirect()->to('/cart');
     }
 
-    public function remove($cartItemId)
+    public function update()
     {
-        $cartModel = new CartModel();
-        $cartModel->delete($cartItemId);
-
-        return redirect()->to('cart');
+        $cart = session()->get('cart') ?? [];
+        foreach ($this->request->getPost('quantities') as $id => $quantity) {
+            if (isset($cart[$id])) {
+                $cart[$id]['quantity'] = $quantity;
+            }
+        }
+        session()->set('cart', $cart);
+        return redirect()->to('/cart');
     }
 }

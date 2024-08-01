@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\OrderModel;
 use CodeIgniter\Controller;
 
 class User extends Controller
@@ -14,5 +15,14 @@ class User extends Controller
         }
 
         return view('user/index');
+    }
+
+    public function orderHistory()
+    {
+        $userId = session()->get('user_id'); // Fetch user ID from session
+        $model = new OrderModel(); // Create an instance of OrderModel
+        $orders = $model->where('user_id', $userId)->findAll(); // Fetch orders for the user
+
+        echo view('order_history', ['orders' => $orders]); // Pass orders to view
     }
 }

@@ -15,6 +15,11 @@ $routes->post('authenticate', 'Auth::authenticate');
 $routes->get('logout', 'Auth::logout');
 $routes->get('user', 'User::index');
 $routes->get('admin', 'Admin::index', ['filter' => 'adminFilter']);
-$routes->get('cart', 'CartController::index');
-$routes->post('cart/update/(:num)', 'CartController::update/$1');
-$routes->get('cart/remove/(:num)', 'CartController::remove/$1');
+$routes->get('/cart', 'CartController::index');
+$routes->get('/cart/add/(:num)', 'CartController::add/$1');
+$routes->get('/cart/remove/(:num)', 'CartController::remove/$1');
+$routes->post('/cart/update', 'CartController::update');
+$routes->get('/checkout', 'CheckoutController::index');
+$routes->post('/checkout/complete', 'CheckoutController::complete');
+$routes->get('/order_history', 'UserController::orderHistory');
+
