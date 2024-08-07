@@ -37,7 +37,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="user/order_history">
+                            <a class="nav-link active" href="/user/order_history">
                                 View Order History
                             </a>
                         </li>

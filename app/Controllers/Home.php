@@ -23,5 +23,4 @@ class Home extends BaseController
     {
         return view('contact_us');
     }
-
 }

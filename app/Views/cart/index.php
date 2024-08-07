@@ -45,6 +45,4 @@
 <a href="<?= base_url('/') ?>" class="btn btn-secondary">Continue Shopping</a>
 <a href="<?= base_url('/checkout') ?>" class="btn btn-success">Proceed to Checkout</a>
 
-
-
 <?= $this->include('layouts/footer') ?>

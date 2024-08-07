@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\Order_Model;
 use App\Models\OrderModel;
 use CodeIgniter\Controller;
 
@@ -11,6 +10,7 @@ class User extends Controller
     public function index()
     {
         $session = session();
+        // Check if the user is logged in and not an admin
         if (!$session->get('logged_in') || $session->get('is_admin')) {
             return redirect()->to('/login');
         }
@@ -20,14 +20,20 @@ class User extends Controller
 
     public function orderHistory()
     {
-        $user_id = session()->get('user_id'); // Get logged-in user ID
+        $session = session();
+        $user_id = $session->get('user_id'); // Get logged-in user ID
 
-        $orderModel = new Order_Model(); // Create an instance of OrderModel
+        $orderModel = new OrderModel(); // Create an instance of OrderModel
 
         try {
-            $data['orders'] = $orderModel->getOrdersByUserId($user_id); // Fetch orders
+            // Fetch orders for the logged-in user with specific statuses
+            $data['orders'] = $orderModel->where('user_id', $user_id)
+                ->whereIn('status', ['Completed', 'Cancelled'])
+                ->findAll();
         } catch (\Exception $e) {
             // Handle the exception
+            $data['orders'] = [];
+            $data['error'] = 'Unable to fetch order history. Please try again later.';
         }
 
         return view('user/order_history', $data); // Pass data to the view

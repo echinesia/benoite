@@ -22,13 +22,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="/manage_order">
-                                Manage Order
+                            <a class="nav-link active" href="admin/manage_orders">
+                                Manage Orders
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="/cake_catalog">
-                                Cake Catalog
+                            <a class="nav-link active" href="/admin/manage_cake">
+                                Manage Cake
                             </a>
                         </li>
                     </ul>

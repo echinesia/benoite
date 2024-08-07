@@ -132,13 +132,13 @@
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="/uploads/slide1.jpg" class="d-block w-100" alt="Slide 1">
+            <img src="/uploads/slide1.png" class="d-block w-100" alt="Slide 1">
         </div>
         <div class="carousel-item">
-            <img src="/uploads/slide2.jpg" class="d-block w-100" alt="Slide 2">
+            <img src="/uploads/slide2.png" class="d-block w-100" alt="Slide 2">
         </div>
         <div class="carousel-item">
-            <img src="/uploads/slide3.jpg" class="d-block w-100" alt="Slide 3">
+            <img src="/uploads/slide3.png" class="d-block w-100" alt="Slide 3">
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -149,30 +149,6 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
     </button>
-</div>
-
-<hr class="custom-line">
-
-<div class="container products-container">
-    <h3 class="text-center">Our Best Products</h3>
-    <div class="row mt-4">
-        <?php if (!empty($cakes) && is_array($cakes)) : ?>
-            <?php foreach (array_slice($cakes, 0, 3) as $cake) : ?>
-                <div class="col-md-4 mb-4">
-                    <div class="card bg-dark text-white h-100">
-                        <img src="<?= base_url('uploads/' . esc($cake['image_url'])) ?>" class="card-img-top" alt="<?= esc($cake['name']) ?>">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= esc($cake['name']) ?></h5>
-                            <p class="card-text"><?= esc($cake['description']) ?></p>
-                            <p class="card-text">$<?= esc($cake['price']) ?></p>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        <?php else : ?>
-            <p>No cakes available.</p>
-        <?php endif; ?>
-    </div>
 </div>
 
 <hr class="custom-line">
