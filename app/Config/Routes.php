@@ -33,7 +33,7 @@ $routes->get('/checkout/complete_purchase/(:num)', 'CheckoutController::complete
 
 
 // Order History Route
-$routes->get('/user/order_history', 'User::orderHistory');
+$routes->get('user/order_status', 'User::order_status', ['filter' => 'authFilter']);
 
 
 // Profile Routes

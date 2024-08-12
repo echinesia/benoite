@@ -14,9 +14,12 @@ class OrderModel extends Model
     public function getOrdersByUserId($user_id)
     {
         // Adding a where clause to filter orders by user_id
-        $this->where('user_id', $user_id);
+        return $this->where('user_id', $user_id)->findAll(); // Using findAll() to get all records that match the where clause
+    }
 
-        // Retrieving the results
-        return $this->findAll(); // Using findAll() to get all records that match the where clause
+    // General method to get orders by status
+    public function getOrdersByStatus(array $statuses)
+    {
+        return $this->whereIn('status', $statuses)->findAll();
     }
 }

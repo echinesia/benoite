@@ -18,24 +18,29 @@ class User extends Controller
         return view('user/index');
     }
 
-    public function orderHistory()
+    protected $orderModel;
+
+    public function __construct()
+    {
+        $this->orderModel = new OrderModel();
+    }
+
+    public function order_status()
     {
         $session = session();
-        $user_id = $session->get('user_id'); // Get logged-in user ID
 
-        $orderModel = new OrderModel(); // Create an instance of OrderModel
-
-        try {
-            // Fetch orders for the logged-in user with specific statuses
-            $data['orders'] = $orderModel->where('user_id', $user_id)
-                ->whereIn('status', ['Completed', 'Cancelled'])
-                ->findAll();
-        } catch (\Exception $e) {
-            // Handle the exception
-            $data['orders'] = [];
-            $data['error'] = 'Unable to fetch order history. Please try again later.';
+        // Check if the user is logged in and is not an admin
+        if (!$session->get('logged_in') || $session->get('is_admin')) {
+            return redirect()->to('/login');
         }
 
-        return view('user/order_history', $data); // Pass data to the view
+        // Fetch orders based on their status using the new method
+        $data = [
+            'pendingProcessingOrders' => $this->orderModel->getOrdersByStatus(['Pending', 'Processing']),
+            'completedOrders' => $this->orderModel->getOrdersByStatus(['Completed']),
+            'canceledOrders' => $this->orderModel->getOrdersByStatus(['Canceled']),
+        ];
+
+        return view('user/order_status', $data);
     }
 }

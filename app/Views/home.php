@@ -112,7 +112,7 @@
     <div class="row w-100">
         <div class="col-md-6 header-left d-flex flex-column justify-content-center">
             <h2 class="display-4">Welcome to </h2>
-            <h2 class="display-4">Homemade Cakes</h2>
+            <h2 class="display-4">Benoite Kitchen</h2>
             <p class="mb-4">Delicious homemade cakes made with love.</p>
             <a href="/cake_catalog" class="btn btn-custom">Shop now</a>
         </div>
@@ -156,11 +156,11 @@
 <div class="container social-media">
     <h3>Visit our social media</h3>
     <div class="social-links">
-        <a href="https://www.instagram.com/yourinstagram" target="_blank">
+        <a href="https://www.instagram.com/benoite.idn/" target="_blank">
             <img src="/uploads/instagram_icon.png" alt="Instagram Icon">
             share with us
         </a>
-        <a href="https://www.facebook.com/yourfacebook" target="_blank">
+        <a href="https://www.facebook.com/people/Benoite-Kitchen/100054797078681/" target="_blank">
             <img src="/uploads/facebook_icon.png" alt="Facebook Icon">
             join on facebook
         </a>

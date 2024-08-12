@@ -13,7 +13,7 @@
                 <ul class="list-unstyled text-left">
                     <li><a href="/home" class="text-white">Home</a></li>
                     <li><a href="/cake_catalog" class="text-white">Product</a></li>
-                    <li><a href="/contact" class="text-white">Contact</a></li>
+                    <li><a href="/contact_us" class="text-white">Contact</a></li>
                 </ul>
             </div>
             <div class="col-md-4 nav-section">
@@ -35,6 +35,6 @@
     </div>
 </div>
 <footer class="bg-dark text-center text-white py-3 mt-0">
-    &copy; <?= date('Y') ?> Homemade Cakes. All rights reserved.
+    &copy; <?= date('Y') ?> Benoite Kitchen. All rights reserved.
 </footer>
 <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
